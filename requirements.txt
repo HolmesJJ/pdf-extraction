@@ -1,3 +1,5 @@
+Pillow
+PyMuPDF
 openpyxl
 pdf2image
 matplotlib

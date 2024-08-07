@@ -1,8 +1,11 @@
 import os
+import io
+import fitz
 import shutil
 import layoutparser as lp
-
 import matplotlib.pyplot as plt
+
+from PIL import Image
 from pdf2image import convert_from_path
 from openpyxl import Workbook
 from openpyxl.styles import Font
@@ -52,6 +55,25 @@ def pixels_to_points(pixels):
 
 def pixels_to_width_units(pixels):
     return pixels / 8
+
+
+def read_pdf():
+    pdf_document = fitz.open(INPUT_FILE)
+    for page in pdf_document:
+        blocks = page.get_text('blocks')
+        blocks = sorted(blocks, key=lambda b: b[1])
+        for block in blocks:
+            x0, y0, x1, y1, text, block_type, block_number = block
+            print('=' * 10)
+            print(x0, y0, x1, y1, text, block_type, block_number)
+            print('=' * 10)
+        images = page.get_images(full=True)
+        for image in images:
+            xref = image[0]
+            base_image = pdf_document.extract_image(xref)
+            image_bytes = base_image['image']
+            image = Image.open(io.BytesIO(image_bytes))
+            display_image(image, f'Page {page.number + 1} Image')
 
 
 def run(debug=False):
@@ -108,6 +130,7 @@ def run(debug=False):
 
 
 if __name__ == '__main__':
+    # read_pdf()
     print(list(lp.models.auto_layoutmodel.ALL_AVAILABLE_BACKENDS))
     print(len(convert_from_path(INPUT_FILE)))
     run(debug=False)
