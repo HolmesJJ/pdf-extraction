@@ -1,0 +1,5 @@
+openpyxl
+pdf2image
+layoutparser
+layoutparser[layoutmodels]
+layoutparser[ocr]
