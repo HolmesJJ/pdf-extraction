@@ -1,7 +1,8 @@
 # PDF Extraction
 
 * [Layout Parser](https://github.com/Layout-Parser/layout-parser?tab=readme-ov-file)
-* [pdf2image](https://pypi.org/project/pdf2image/)
+* [Layout Parser's Documentation](https://layout-parser.readthedocs.io/en/latest/)
+* [Layout Parser Model Training](https://www.kaggle.com/code/ammarnassanalhajali/layout-parser-model-training)
 
 ## Quick Start
 
@@ -31,3 +32,10 @@ conda remove -n pdf-extraction --all
 ```
 pip install -r /path/to/requirements.txt
 ```
+
+4. Bugs Resolved.
+* https://pypi.org/project/pdf2image/
+* https://github.com/orgs/Homebrew/discussions/5373
+* https://github.com/facebookresearch/detectron2/issues/5216
+* https://github.com/facebookresearch/detectron2/issues/5010
+* https://github.com/Layout-Parser/layout-parser/issues/168

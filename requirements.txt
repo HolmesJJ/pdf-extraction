@@ -1,5 +1,6 @@
 openpyxl
 pdf2image
+matplotlib
 layoutparser
 layoutparser[layoutmodels]
 layoutparser[ocr]
